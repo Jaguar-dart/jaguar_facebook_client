@@ -12,6 +12,9 @@ class UserFieldSelector {
 
   List<String> toList() => _fields.toList();
 
+  Map<String, String> toQuery() =>
+      <String, String>{'fields': _fields.toList().join(',')};
+
   static const String idField = 'id';
 
   static const String aboutField = 'about';
@@ -133,9 +136,7 @@ class GraphApi {
         scheme: 'https',
         host: 'graph.facebook.com',
         path: '/v2.8/me',
-        queryParameters: {
-          'fields': fields.toList(),
-        });
+        queryParameters: fields.toQuery());
     final resp = await client.get(uri);
     dynamic map = JSON.decode(resp.body);
     if (map is! Map) {
