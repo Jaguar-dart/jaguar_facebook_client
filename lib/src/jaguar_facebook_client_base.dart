@@ -10,6 +10,8 @@ class UserFieldSelector {
 
   Set<String> _fields = new Set<String>();
 
+  List<String> toList() => _fields.toList();
+
   static const String idField = 'id';
 
   static const String aboutField = 'about';
@@ -124,9 +126,19 @@ class GraphApi {
   GraphApi(this.client);
 
   Future<UserResult> getMe({UserFieldSelector fields}) async {
-    final resp = await client.get('https://graph.facebook.com/v2.8/me');
+    if (fields == null) {
+      fields = new UserFieldSelector();
+    }
+    final uri = new Uri(
+        scheme: 'https',
+        host: 'graph.facebook.com',
+        path: '/v2.8/me',
+        queryParameters: {
+          'fields': fields.toList(),
+        });
+    final resp = await client.get(uri);
     dynamic map = JSON.decode(resp.body);
-    if(map is! Map) {
+    if (map is! Map) {
       throw new Exception('Map expected found ${map.runtimeType}');
     }
     return new UserResult(map, fields);
