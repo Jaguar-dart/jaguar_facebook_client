@@ -1,6 +1,6 @@
 # jaguar_facebook_client
 
-A library for Dart developers. It is awesome.
+Facebook client for Dart from Jaguar authors
 
 ## Usage
 
@@ -16,4 +16,4 @@ A simple usage example:
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: http://example.com/issues/replaceme
+[tracker]: https://github.com/Jaguar-dart/jaguar_facebook_client/issues
