@@ -1,6 +1,6 @@
 name: jaguar_facebook_client
 description: Facebook client for Dart from Jaguar authors
-version: 0.0.3
+version: 0.0.4
 authors:
 - Ravi Teja Gudapati <tejainece@gmail.com>
 - Kevin Segaud <segaud.kevin@gmail.com>
